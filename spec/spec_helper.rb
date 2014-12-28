@@ -1,6 +1,5 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'game_of_life'
 require 'rspec'
 require "ostruct"
 require "support"
@@ -8,6 +7,7 @@ require "parser"
 require 'cell'
 require 'position'
 require 'generation'
+require 'game_of_life'
 
 RSpec.configure do |config|
   # == Mock Framework

@@ -13,6 +13,10 @@ class LiveCell
   def alive?
     @alive
   end
+
+  def next_generation(neighbours_count)
+    neighbours_count > 1 && neighbours_count < 4 ? self : DeadCell.instance
+  end
 end
 
 class DeadCell
@@ -27,6 +31,10 @@ class DeadCell
 
   def alive?
     @alive
+  end
+
+  def next_generation(neighbours_count)
+    neighbours_count == 3 ? LiveCell.instance : DeadCell.instance
   end
 end
 

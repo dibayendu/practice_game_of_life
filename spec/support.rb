@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'stringio'
 
 shared_context "positions" do
 
@@ -19,3 +20,20 @@ shared_context "positions" do
   let(:data) { "| . | x | . |\n| . | . | . |\n| . | . | . |\n" }
 end
 
+def capture_stdout(&blk)
+  old = $stdout
+  $stdout = fake = StringIO.new
+  blk.call
+  fake.string
+ensure
+  $stdout = old
+end
+
+def capture_stderr(&blk)
+  old = $stderr
+  $stderr = fake = StringIO.new
+  blk.call
+  fake.string
+ensure
+  $stderr = old
+end

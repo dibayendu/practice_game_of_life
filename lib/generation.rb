@@ -1,6 +1,6 @@
 class Generation
 
-  attr_reader :col_count, :row_count
+  attr_reader :row_count, :col_count
   def world; @world.clone; end #immutable
 
   def initialize(row_count, col_count)
@@ -12,6 +12,11 @@ class Generation
 
   def add(position, cell)
     @world.merge!({position => cell})
+  end
+
+  def get_cell(position)
+    key = world.keys.find { |p| p == position }
+    world[key]
   end
 
   def to_s
@@ -26,6 +31,17 @@ class Generation
       end
     end
     string
+  end
+
+  def next
+    next_gen = Generation.new(row_count, col_count)
+    world.each do |position, cell|
+      neighbours = position.neighbours(col_count, row_count)
+      live_neighbours_count = neighbours.select { |pos| get_cell(pos).alive? }.count
+      next_life = cell.next_generation(live_neighbours_count)
+      next_gen.add(position, next_life)
+    end
+    next_gen
   end
 
   class << self
