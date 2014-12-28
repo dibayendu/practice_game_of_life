@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe World do
+describe Generation do
   include_context 'positions'
 
-  let(:generation) do
+  let(:world) do
     {
       position_1 => dead_cell, position_2 => live_cell, position_3 => dead_cell,
       position_4 => dead_cell, position_5 => dead_cell, position_6 => dead_cell,
@@ -11,13 +11,13 @@ describe World do
     }
   end
 
-  subject { World.create(array_2d) }
+  subject { Generation.create(array_2d) }
 
   it "creates correct world" do
-    expect(subject.generation).to contain_exactly(*generation)
+    expect(subject.world).to contain_exactly(*world)
   end
 
-  it "prints world" do
+  it "prints generation" do
     expect(subject.to_s).to eql(data)
   end
 end

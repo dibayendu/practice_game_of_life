@@ -7,7 +7,7 @@ require "support"
 require "parser"
 require 'cell'
 require 'position'
-require 'world'
+require 'generation'
 
 RSpec.configure do |config|
   # == Mock Framework
