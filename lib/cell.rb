@@ -1,24 +1,28 @@
-class Cell
-  private_class_method :new
-  attr_reader :alive
+require 'singleton'
+
+class LiveCell
+  include Singleton
+
+  def initialize
+    @alive = true
+    @alive.freeze
+  end
 
   def alive?
-    alive
+    @alive
   end
-
-  class << self
-    def living
-      Cell.send(:new, true)
-    end
-
-    def dead
-      Cell.send(:new, false)
-    end
-  end
-
-  private
-    def initialize(alive)
-      @alive = alive
-      @alive.freeze
-    end
 end
+
+class DeadCell
+  include Singleton
+
+  def initialize
+    @alive = false
+    @alive.freeze
+  end
+
+  def alive?
+    @alive
+  end
+end
+

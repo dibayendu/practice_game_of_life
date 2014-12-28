@@ -1,12 +1,14 @@
 require 'spec_helper'
 
-describe Cell do
-
-  context "new living cell alive?" do
-    it { expect(Cell.living.alive?).to be true }
-  end
-
-  context "new dead cell alive?" do
-    it { expect(Cell.dead.alive?).to be false }
+describe LiveCell do
+  context "live cell alive?" do
+    it { expect(LiveCell.instance.alive?).to be true }
   end
 end
+
+describe DeadCell do
+  context "dead cell alive?" do
+    it { expect(DeadCell.instance.alive?).to be false }
+  end
+end
+
