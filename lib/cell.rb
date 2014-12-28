@@ -3,6 +3,8 @@ require 'singleton'
 class LiveCell
   include Singleton
 
+  CHARACTER = "x"
+
   def initialize
     @alive = true
     @alive.freeze
@@ -15,6 +17,8 @@ end
 
 class DeadCell
   include Singleton
+
+  CHARACTER = "."
 
   def initialize
     @alive = false

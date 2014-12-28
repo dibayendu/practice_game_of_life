@@ -14,4 +14,8 @@ shared_context "positions" do
 
   let(:dead_cell) { DeadCell.instance }
   let(:live_cell) { LiveCell.instance }
+
+  let(:array_2d) { [[".", "x", "."], [".", ".", "."], [".", ".", "."]] }
+  let(:data) { "| . | x | . |\n| . | . | . |\n| . | . | . |\n" }
 end
+

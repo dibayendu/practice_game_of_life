@@ -4,6 +4,7 @@ require 'game_of_life'
 require 'rspec'
 require "ostruct"
 require "support"
+require "parser"
 require 'cell'
 require 'position'
 require 'world'
