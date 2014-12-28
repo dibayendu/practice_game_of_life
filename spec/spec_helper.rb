@@ -2,8 +2,10 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'game_of_life'
 require 'rspec'
-require 'rspec/autorun'
+require "ostruct"
+require "support"
 require 'cell'
+require 'position'
 
 RSpec.configure do |config|
   # == Mock Framework
