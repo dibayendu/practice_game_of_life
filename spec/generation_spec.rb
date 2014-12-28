@@ -4,24 +4,48 @@ describe Generation do
   include_context 'positions'
 
   let(:current) do
-    {
-      position_1 => dead_cell, position_2 => live_cell, position_3 => dead_cell,
-      position_4 => dead_cell, position_5 => dead_cell, position_6 => dead_cell,
-      position_7 => dead_cell, position_8 => dead_cell, position_9 => dead_cell,
-    }
+    [
+      [
+        {:position => position_1, :cell => dead_cell},
+        {:position => position_2, :cell => live_cell},
+        {:position => position_3, :cell => dead_cell}
+      ],
+      [
+        {:position => position_4, :cell => dead_cell},
+        {:position => position_5, :cell => dead_cell},
+        {:position => position_6, :cell => dead_cell}
+      ],
+      [
+        {:position => position_7, :cell => dead_cell},
+        {:position => position_8, :cell => dead_cell},
+        {:position => position_9, :cell => dead_cell}
+      ]
+    ]
   end
 
   let(:next_world) do
-    {
-      position_1 => dead_cell, position_2 => dead_cell, position_3 => dead_cell,
-      position_4 => dead_cell, position_5 => dead_cell, position_6 => dead_cell,
-      position_7 => dead_cell, position_8 => dead_cell, position_9 => dead_cell,
-    }
+    [
+      [
+        {:position => position_1, :cell => dead_cell},
+        {:position => position_2, :cell => dead_cell},
+        {:position => position_3, :cell => dead_cell}
+      ],
+      [
+        {:position => position_4, :cell => dead_cell},
+        {:position => position_5, :cell => dead_cell},
+        {:position => position_6, :cell => dead_cell}
+      ],
+      [
+        {:position => position_7, :cell => dead_cell},
+        {:position => position_8, :cell => dead_cell},
+        {:position => position_9, :cell => dead_cell}
+      ]
+    ]
   end
 
   subject { Generation.create(array_2d) }
 
-  it "#creat correct world" do
+  it "#create correct world" do
     expect(subject.world).to contain_exactly(*current)
   end
 
@@ -33,3 +57,4 @@ describe Generation do
     expect(subject.to_s).to eql(data)
   end
 end
+
