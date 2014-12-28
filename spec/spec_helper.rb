@@ -6,6 +6,7 @@ require "ostruct"
 require "support"
 require 'cell'
 require 'position'
+require 'world'
 
 RSpec.configure do |config|
   # == Mock Framework
