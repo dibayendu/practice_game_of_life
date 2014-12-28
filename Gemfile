@@ -1,8 +1,9 @@
-source :rubygems
+source 'https://rubygems.org'
+
 gem 'rake'
 gem 'jeweler'
 gem 'rdoc'
-gem 'rcov'
+gem 'simplecov'
 gem 'relish'
 
 gem 'rspec'
