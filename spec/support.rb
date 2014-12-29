@@ -18,6 +18,26 @@ shared_context "positions" do
 
   let(:array_2d) { [[".", "x", "."], [".", ".", "."], [".", ".", "."]] }
   let(:data) { "| . | x | . |\n| . | . | . |\n| . | . | . |\n" }
+
+  let(:current_grid) do
+    [
+      [
+        {:position => position_1, :cell => dead_cell},
+        {:position => position_2, :cell => live_cell},
+        {:position => position_3, :cell => dead_cell}
+      ],
+      [
+        {:position => position_4, :cell => dead_cell},
+        {:position => position_5, :cell => dead_cell},
+        {:position => position_6, :cell => dead_cell}
+      ],
+      [
+        {:position => position_7, :cell => dead_cell},
+        {:position => position_8, :cell => dead_cell},
+        {:position => position_9, :cell => dead_cell}
+      ]
+    ]
+  end
 end
 
 def capture_stdout(&blk)

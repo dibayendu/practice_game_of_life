@@ -6,6 +6,7 @@ require "support"
 require "parser"
 require 'cell'
 require 'position'
+require 'population'
 require 'generation'
 require 'game_of_life'
 
