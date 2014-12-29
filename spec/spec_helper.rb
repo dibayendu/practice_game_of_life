@@ -1,9 +1,10 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'rspec'
-require "ostruct"
-require "support"
-require "parser"
+require 'ostruct'
+require 'support'
+require 'error'
+require 'parser'
 require 'cell'
 require 'position'
 require 'population'
