@@ -20,7 +20,7 @@ class Population
   def to_s
     string = ""
     grid.each do |row|
-      row.each { |data| string += data[:cell].to_s_grid }
+      row.each { |data| string += data && !data.empty? ? data[:cell].to_s_grid : "" }
       string += "|\n"
     end
     string

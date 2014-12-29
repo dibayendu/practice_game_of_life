@@ -1,8 +1,8 @@
 class Position
   include Comparable
 
-  ROW = 1
-  COL = 0
+  ROW = 0
+  COL = 1
 
   attr_reader :col, :row
   def coordinates; return row, col; end
