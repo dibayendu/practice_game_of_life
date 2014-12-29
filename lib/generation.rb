@@ -1,4 +1,7 @@
+require 'forwardable'
+
 class Generation
+  extend Forwardable
 
   attr_reader :population
 
@@ -6,6 +9,8 @@ class Generation
     @population = population
     @population.freeze
   end
+
+  def_delegator :@population, :to_s
 
   def next
     row_count = population.row_count
@@ -17,8 +22,8 @@ class Generation
         live_neighbours_count = neighbours.count { |p|
           population.grid[p.row][p.col][:cell].alive?
         }
-        next_life = data[:cell].next_generation(live_neighbours_count)
-        next_population.add(data[:position], next_life)
+        next_life_cell = data[:cell].next_generation(live_neighbours_count)
+        next_population.add(data[:position], next_life_cell)
       end
     end
     Generation.new(next_population)
