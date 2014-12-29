@@ -45,6 +45,14 @@ describe Generation do
 
   subject { Generation.create(array_2d) }
 
+  it "#initialize generation, world is empty" do
+    expect(Generation.new(3, 3).world).to eql([[{}, {}, {}], [{}, {}, {}], [{}, {}, {}]])
+  end
+
+  it "#center_cell is dead" do
+    expect(subject.center_cell.alive?).to be false
+  end
+
   it "#create correct world" do
     expect(subject.world).to contain_exactly(*current)
   end

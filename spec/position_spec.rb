@@ -4,8 +4,8 @@ describe Position do
   include_context 'positions'
 
   let(:position) { Position.new(*coordinates) }
-  let(:x_limit) { 3 }
-  let(:y_limit) { 3 }
+  let(:row_limit) { 3 }
+  let(:col_limit) { 3 }
   let(:first_cell)  { OpenStruct.new(:cell => position_1,
                                      :neighbours => [position_2, position_4, position_5]) }
   let(:second_cell) { OpenStruct.new(:cell => position_2,
@@ -36,15 +36,15 @@ describe Position do
 
   context "#initialize" do
     let(:coordinates) { position_8.coordinates }
-    it { expect(position.x).to eql 1 }
-    it { expect(position.y).to eql 2 }
-    it { expect(position.to_s).to eql "1,2" }
+    it { expect(position.row).to eql 2 }
+    it { expect(position.col).to eql 1 }
+    it { expect(position.to_s).to eql "2,1" }
   end
 
   context "#neighbours" do
     (0..8).each do |i|
       it "cell #{(i+1).to_s} has correct neighbours" do
-        neighbours = Position.new(*cells[i].cell.coordinates).neighbours(x_limit, y_limit)
+        neighbours = Position.new(*cells[i].cell.coordinates).neighbours(row_limit, col_limit)
         expect(neighbours).to contain_exactly(*cells[i].neighbours)
       end
     end
