@@ -1,17 +1,25 @@
 require 'singleton'
 
-class LiveCell
+class Cell
+  private_class_method :new
+
+  def alive?; @alive; end
+  def to_s_grid; "| #{to_s} "; end
+  def to_s; @character; end
+
+  def self.create(character)
+    character.casecmp(LiveCell::CHARACTER) == 0 ? LiveCell.instance : DeadCell.instance
+  end
+end
+
+class LiveCell < Cell
   include Singleton
 
   CHARACTER = "x"
 
   def initialize
     @alive = true
-    @alive.freeze
-  end
-
-  def alive?
-    @alive
+    @character = CHARACTER
   end
 
   def next_generation(neighbours_count)
@@ -19,18 +27,14 @@ class LiveCell
   end
 end
 
-class DeadCell
+class DeadCell < Cell
   include Singleton
 
   CHARACTER = "."
 
   def initialize
     @alive = false
-    @alive.freeze
-  end
-
-  def alive?
-    @alive
+    @character = CHARACTER
   end
 
   def next_generation(neighbours_count)

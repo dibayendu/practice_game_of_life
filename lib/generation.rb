@@ -22,9 +22,7 @@ class Generation
   def to_s
     string = ""
     world.each do |row|
-      row.each do |data|
-        string += data[:cell].alive? ? "| #{LiveCell::CHARACTER} " : "| #{DeadCell::CHARACTER} "
-      end
+      row.each { |data| string += data[:cell].to_s_grid }
       string += "|\n"
     end
     string
@@ -49,7 +47,7 @@ class Generation
       array_2d.each_with_index do |row, i|
         row.each_with_index do |col, j|
           position = Position.new(i,j)
-          cell = col.casecmp(LiveCell::CHARACTER) == 0 ? LiveCell.instance : DeadCell.instance
+          cell = Cell.create(col)
           generation.add(position, cell)
         end
       end
