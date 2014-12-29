@@ -1,27 +1,27 @@
 class Generation
 
   attr_reader :row_count, :col_count
-  def world; @world.clone; end #immutable
+  def population; @population.clone; end #immutable
 
   def initialize(row_count, col_count)
     # e.g. 2d[3][3] = [[{}, {}, {}], [{}, {}, {}], [{}, {}, {}]]
-    @world = Array.new(row_count){Array.new(col_count, {})}
+    @population = Array.new(row_count){Array.new(col_count, {})}
     @row_count, @col_count = row_count, col_count
     @row_count.freeze
     @col_count.freeze
   end
 
   def center_cell
-    world[row_count/2][col_count/2][:cell]
+    population[row_count/2][col_count/2][:cell]
   end
 
   def add(position, cell)
-    @world[position.row][position.col] = { position: position, cell: cell }
+    @population[position.row][position.col] = { position: position, cell: cell }
   end
 
   def to_s
     string = ""
-    world.each do |row|
+    population.each do |row|
       row.each { |data| string += data[:cell].to_s_grid }
       string += "|\n"
     end
@@ -30,10 +30,10 @@ class Generation
 
   def next
     next_gen = Generation.new(row_count, col_count)
-    world.each do |row|
+    population.each do |row|
       row.each do |data|
         neighbours = data[:position].neighbours(row_count, col_count)
-        live_neighbours_count = neighbours.select { |p| world[p.row][p.col][:cell].alive? }.count
+        live_neighbours_count = neighbours.count { |p| population[p.row][p.col][:cell].alive? }
         next_life = data[:cell].next_generation(live_neighbours_count)
         next_gen.add(data[:position], next_life)
       end

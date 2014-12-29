@@ -23,7 +23,7 @@ describe Generation do
     ]
   end
 
-  let(:next_world) do
+  let(:next_population) do
     [
       [
         {:position => position_1, :cell => dead_cell},
@@ -45,20 +45,20 @@ describe Generation do
 
   subject { Generation.create(array_2d) }
 
-  it "#initialize generation, world is empty" do
-    expect(Generation.new(3, 3).world).to eql([[{}, {}, {}], [{}, {}, {}], [{}, {}, {}]])
+  it "#initialize generation, population is empty" do
+    expect(Generation.new(3, 3).population).to eql([[{}, {}, {}], [{}, {}, {}], [{}, {}, {}]])
   end
 
   it "#center_cell is dead" do
     expect(subject.center_cell.alive?).to be false
   end
 
-  it "#create correct world" do
-    expect(subject.world).to contain_exactly(*current)
+  it "#create correct population" do
+    expect(subject.population).to contain_exactly(*current)
   end
 
-  it "#next world" do
-    expect(subject.next.world).to contain_exactly(*next_world)
+  it "#next population" do
+    expect(subject.next.population).to contain_exactly(*next_population)
   end
 
   it "prints generation" do
