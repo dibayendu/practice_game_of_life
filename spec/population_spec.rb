@@ -1,4 +1,4 @@
-require 'population'
+require 'spec_helper'
 
 describe Population do
   include_context 'positions'
@@ -19,6 +19,10 @@ describe Population do
 
   it "prints generation" do
     expect(subject.to_s).to eql(data)
+  end
+
+  it "#to_a correct data" do
+    expect(subject.to_a).to contain_exactly(*array_2d)
   end
 end
 

@@ -26,6 +26,14 @@ class Population
     string
   end
 
+  def to_a
+    array = Array.new(row_count){Array.new(col_count)}
+    grid.each_with_index do |row, i|
+      row.each_with_index { |data, j| array[i][j] = data[:cell].to_s }
+    end
+    array
+  end
+
   class << self
     def create(array_2d)
       population = Population.new(array_2d.count, array_2d.first.count)
