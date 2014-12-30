@@ -7,7 +7,11 @@ class Parser
 
   class << self
     def read_data(file)
-      File.read(file)
+      begin
+        File.read(file)
+      rescue => e
+        raise FileError, e.message
+      end
     end
   end
 

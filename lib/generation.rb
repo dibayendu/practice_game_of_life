@@ -7,7 +7,6 @@ class Generation
 
   def initialize(population)
     @population = population
-    @population.freeze
   end
 
   def_delegator :@population, :to_s

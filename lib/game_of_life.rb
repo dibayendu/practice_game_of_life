@@ -2,7 +2,7 @@ class GameOfLife
   DEFAULT_FILE = File.join(File.dirname(__FILE__), 'data', 'data.txt')
 
   def generation
-    @generation ? @generation.clone : setup_generation_from_file
+    generation_exist { @generation = @generation.clone }
   end
 
   def setup_generation_from_file(file=DEFAULT_FILE)
@@ -22,11 +22,16 @@ class GameOfLife
   end
 
   def next_generation
-    if @generation
-      @generation = @generation.next
-    else
-      raise GenerationError.new("No current generation found! Setup generation first.")
-    end
+    generation_exist { @generation = @generation.next }
   end
+
+  private
+    def generation_exist(&block)
+      if @generation
+        yield
+      else
+        raise GenerationError.new("No current generation found! Setup generation first.")
+      end
+    end
 end
 

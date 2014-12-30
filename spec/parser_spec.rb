@@ -10,8 +10,12 @@ describe Parser do
     expect(parser.to_2d_array).to eql(array_2d)
   end
 
-  it "reads data from file" do
-    file_data = Parser.read_data(file)
-    expect(file_data).to eql data
+  context "#read_data" do
+    context "file does not exist" do
+      it { expect{Parser.read_data("blah")}.to raise_error(FileError) }
+    end
+    context "file exists" do
+      it { expect(Parser.read_data(file)).to eql data }
+    end
   end
 end

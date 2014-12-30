@@ -24,7 +24,7 @@ rescue LoadError
   end
 end
 
-task :default => [:spec, :features]
+task default: [:spec, :features]
 
 require 'rdoc/task'
 RDoc::Task.new do |rdoc|
