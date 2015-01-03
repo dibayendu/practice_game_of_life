@@ -4,3 +4,4 @@ coverage
 rdoc
 pkg
 rerun.txt
+node_modules
