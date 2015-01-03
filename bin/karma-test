@@ -1,0 +1,1 @@
+./node_modules/karma/bin/karma start spec/config/karma.conf.js --browsers Firefox --single-run
