@@ -11,7 +11,6 @@ describe("Cell", function() {
     } );
 
     it ("instantiating Cell throws error", function () {
-        expect(function () { new Cell() }).toThrow(new Error("Can't instantiate abstract class!"));
+        expect(function () { new Cell(); }).toThrow(new Error("Can't instantiate abstract class!"));
     });
 });
-
